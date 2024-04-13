@@ -10,7 +10,7 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Flutter Chat'), actions: [
+        appBar: AppBar(title: const Text('ChatRoom'), actions: [
           IconButton(
             icon: Icon(
               Icons.logout,
@@ -21,10 +21,10 @@ class ChatScreen extends StatelessWidget {
             },
           ),
         ]),
-        body: const Column(
+        body: Column(
           children: [
             Expanded(child: ChatMessages()),
-            NewMessage(),
+            const NewMessage(),
           ],
         ));
   }
