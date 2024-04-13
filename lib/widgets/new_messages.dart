@@ -76,9 +76,10 @@ class _NewMessageState extends State<NewMessage> {
               icon: const Icon(
                 Icons.send,
                 size: 26,
+                color: Colors.blue,
               ),
               onPressed: _submitMessage,
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.blue,
             ),
           )
         ],

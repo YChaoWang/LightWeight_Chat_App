@@ -10,17 +10,9 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('ChatRoom'), actions: [
-          IconButton(
-            icon: Icon(
-              Icons.logout,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-          ),
-        ]),
+        appBar: AppBar(
+          title: const Text('ChatRoom'),
+        ),
         body: Column(
           children: [
             Expanded(child: ChatMessages()),

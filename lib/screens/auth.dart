@@ -89,8 +89,8 @@ class _AuthScreenState extends State<AuthScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
+        child: Stack(children: <Widget>[
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
@@ -201,7 +201,7 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ],
           ),
-        ),
+        ]),
       ),
     );
   }
