@@ -16,7 +16,7 @@ Feel free to ask any questions you may have!
 
 ### 中文
 一個使用Flutter和Dart構建的簡單群組聊天專案，前端Mobile App部分使用Flutter，後端則使用Firebase。
-## 說明
+### 說明
 1. 註冊、登入和登出
 2. 允許使用者在此應用程式上自由聊天，同時能夠看到所有使用此應用程式的使用者。
 3. 您的訊息顏色類似橙色，其他人的訊息將會呈現綠色調。
