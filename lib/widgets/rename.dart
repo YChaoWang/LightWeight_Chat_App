@@ -54,6 +54,7 @@ class _RenameFieldState extends State<RenameField> {
 
   @override
   Widget build(BuildContext context) {
+    User user = FirebaseAuth.instance.currentUser!;
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -67,7 +68,7 @@ class _RenameFieldState extends State<RenameField> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintText: "New Username",
+              hintText: "Your current username: ${user.uid}",
               hintStyle: TextStyle(fontSize: 14),
             ),
           ),
