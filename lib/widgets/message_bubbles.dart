@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-// A MessageBubble for showing a single chat message on the ChatScreen.
+// A MessageBubble for showing a single chat message on the reen.
 class MessageBubble extends StatelessWidget {
   // Create a message bubble which is meant to be the first in the sequence.
   MessageBubble.first({

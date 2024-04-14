@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class NewMessage extends StatefulWidget {
-  const NewMessage({super.key});
-
+  const NewMessage({super.key, required this.otherUserId});
+  final String otherUserId;
   @override
   State<NewMessage> createState() => _NewMessageState();
 }
@@ -36,6 +36,7 @@ class _NewMessageState extends State<NewMessage> {
       'userId': user.uid,
       'userName': userData.data()!['username'],
       'userImage': userData.data()!['image_url'],
+      'receiverId': widget.otherUserId,
     });
     // send to Firebase
     print(enteredMessage);
@@ -43,47 +44,49 @@ class _NewMessageState extends State<NewMessage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 1, bottom: 14),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              height: 60,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 12.0,
-                ),
-                child: TextField(
-                  controller: _messageController,
-                  textCapitalization: TextCapitalization.sentences,
-                  autocorrect: true,
-                  enableSuggestions: true,
-                  decoration: InputDecoration(
-                    labelText: 'Send a message...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
+    return widget.otherUserId.isEmpty
+        ? SizedBox.shrink()
+        : Padding(
+            padding: const EdgeInsets.only(left: 15, right: 1, bottom: 14),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 60,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 12.0,
+                      ),
+                      child: TextField(
+                        controller: _messageController,
+                        textCapitalization: TextCapitalization.sentences,
+                        autocorrect: true,
+                        enableSuggestions: true,
+                        decoration: InputDecoration(
+                          labelText: 'Send a message...',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: IconButton(
+                    alignment: Alignment.topCenter,
+                    icon: const Icon(
+                      Icons.send,
+                      size: 26,
+                      color: Colors.blue,
+                    ),
+                    onPressed: _submitMessage,
+                    color: Colors.blue,
+                  ),
+                )
+              ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: IconButton(
-              alignment: Alignment.topCenter,
-              icon: const Icon(
-                Icons.send,
-                size: 26,
-                color: Colors.blue,
-              ),
-              onPressed: _submitMessage,
-              color: Colors.blue,
-            ),
-          )
-        ],
-      ),
-    );
+          );
   }
 }

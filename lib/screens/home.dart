@@ -1,6 +1,11 @@
 import 'package:chat_app/screens/chat.dart';
+import 'package:chat_app/screens/editprofile.dart';
+import 'package:chat_app/widgets/allusers.dart';
+import 'package:chat_app/widgets/rename.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,15 +15,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? _otherUserId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Home Page'), actions: [_logoutButton(context)]),
+      appBar: AppBar(title: const Text('Home Page'), actions: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          _editProfileButton(context),
+        ])
+      ]),
       body: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: <Widget>[
             Container(
+              child: AllUsers(),
               height: double.maxFinite,
             ),
             Container(
@@ -34,23 +44,26 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: Size(200, 45),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        foregroundColor: Colors.white,
-                        side: const BorderSide(color: Colors.white, width: 2),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (ctx) => ChatScreen()));
-                      },
-                      child: const Text(
-                        'Chat Room',
-                        style: TextStyle(color: Colors.white),
-                      )),
+                  // OutlinedButton(
+                  //     style: OutlinedButton.styleFrom(
+                  //       minimumSize: Size(200, 45),
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(20),
+                  //       ),
+                  //       foregroundColor: Colors.white,
+                  //       side: const BorderSide(color: Colors.white, width: 2),
+                  //     ),
+                  //     // onPressed: _otherUserId != null
+                  //     //     ? () {
+                  //     //         Navigator.of(context).push(MaterialPageRoute(
+                  //     //             builder: (ctx) =>
+                  //     //                 ChatScreen(otherUserId: _otherUserId!)));
+                  //     //       }
+                  //     //     : null,
+                  //     child: const Text(
+                  //       'Chat Room',
+                  //       style: TextStyle(color: Colors.white),
+                  //     )),
                 ],
               ),
             ),
@@ -59,35 +72,16 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget _logoutButton(BuildContext context) {
+Widget _editProfileButton(BuildContext context) {
   return IconButton(
     icon: Icon(
-      Icons.logout,
-      color: Theme.of(context).colorScheme.primary,
+      Icons.person,
+      size: 30,
     ),
     onPressed: () {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text('Logout'),
-          content: Text('Are you sure you want to logout?'),
-          actions: [
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(ctx).pop();
-              },
-            ),
-            TextButton(
-              child: Text('Logout'),
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(ctx).pop();
-              },
-            ),
-          ],
-        ),
-      );
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => EditProfileScreen()));
+      // Navigator.of(context).pushNamed(EditProfileScreen.routeName);
     },
   );
 }
