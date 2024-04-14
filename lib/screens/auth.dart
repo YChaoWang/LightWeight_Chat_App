@@ -30,7 +30,7 @@ class _AuthScreenState extends State<AuthScreen> {
     if (!isValid || !_isLogin && _selectedImage == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Please pick an image.'),
+          content: Text('Please entered your authentications.'),
           backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );

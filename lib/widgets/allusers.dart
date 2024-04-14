@@ -60,7 +60,7 @@ class _AllUsersState extends State<AllUsers> {
               decoration: BoxDecoration(
                 color: userDoc.id == currentUserID
                     ? const Color.fromARGB(255, 139, 195, 242)
-                    : const Color.fromARGB(255, 197, 37, 37),
+                    : Colors.grey[300],
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 border: Border(
                   bottom: BorderSide(

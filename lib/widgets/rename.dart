@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -41,11 +42,13 @@ class _RenameFieldState extends State<RenameField> {
           await FirebaseFirestore.instance
               .collection('users')
               .doc(user.uid)
-              .set({
-            // 'email': user.email,
-            // 'imageUrl':
-            'username': _usernameController.text,
-          }, SetOptions(merge: true));
+              .set(
+            {
+              'email': user.email,
+              'imageUrl': "",
+              'username': _usernameController.text,
+            },
+          );
 
           FocusScope.of(context).unfocus();
           _usernameController.clear();
@@ -74,7 +77,7 @@ class _RenameFieldState extends State<RenameField> {
       child: Column(
         children: [
           Text(
-            'Rename your username',
+            'Rename and change to anonymous user without avatar?',
             style: TextStyle(fontSize: 12),
           ),
           SizedBox(height: 4),
