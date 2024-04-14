@@ -5,23 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Flutter Chat'), actions: [
-          IconButton(
-            icon: Icon(
-              Icons.logout,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-          ),
-        ]),
-        body: const Column(
+        appBar: AppBar(
+          title: const Text('ChatRoom'),
+        ),
+        body: Column(
           children: [
             Expanded(child: ChatMessages()),
             NewMessage(),
