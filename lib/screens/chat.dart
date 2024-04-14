@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key, required this.otherUserId});
-  final String otherUserId;
+  const ChatScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,8 @@ class ChatScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Expanded(child: ChatMessages(otherUserId: otherUserId)),
-            NewMessage(otherUserId: otherUserId),
+            Expanded(child: ChatMessages()),
+            NewMessage(),
           ],
         ));
   }

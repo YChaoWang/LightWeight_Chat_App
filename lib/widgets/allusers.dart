@@ -29,22 +29,14 @@ class AllUsers extends StatelessWidget {
             final email = userData['email'] ?? '';
             final imageUrl =
                 userData['image_url'] ?? ''; // 假設圖像 URL 存儲在 'image_url' 字段中
-            return InkWell(
-              onTap: () {
-                // 點擊用戶時，導航到用戶的聊天頁面
-                Navigator.of(context).pushNamed('/chat', arguments: {
-                  'otherUserId': userDoc.id,
-                });
-              },
-              child: ListTile(
-                leading: imageUrl.isNotEmpty
-                    ? CircleAvatar(
-                        backgroundImage: NetworkImage(imageUrl),
-                      )
-                    : Icon(Icons.account_circle), // 如果圖像 URL 為空，顯示默認圖像
-                title: Text(username),
-                subtitle: Text(email),
-              ),
+            return ListTile(
+              leading: imageUrl.isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(imageUrl),
+                    )
+                  : Icon(Icons.account_circle), // 如果圖像 URL 為空，顯示默認圖像
+              title: Text(username),
+              subtitle: Text(email),
             );
           }).toList();
           // 顯示所有用戶的列表

@@ -44,26 +44,25 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // OutlinedButton(
-                  //     style: OutlinedButton.styleFrom(
-                  //       minimumSize: Size(200, 45),
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(20),
-                  //       ),
-                  //       foregroundColor: Colors.white,
-                  //       side: const BorderSide(color: Colors.white, width: 2),
-                  //     ),
-                  //     // onPressed: _otherUserId != null
-                  //     //     ? () {
-                  //     //         Navigator.of(context).push(MaterialPageRoute(
-                  //     //             builder: (ctx) =>
-                  //     //                 ChatScreen(otherUserId: _otherUserId!)));
-                  //     //       }
-                  //     //     : null,
-                  //     child: const Text(
-                  //       'Chat Room',
-                  //       style: TextStyle(color: Colors.white),
-                  //     )),
+                  OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: Size(200, 45),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        foregroundColor: Colors.white,
+                        side: const BorderSide(color: Colors.white, width: 2),
+                      ),
+                      onPressed: _otherUserId != null
+                          ? () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (ctx) => ChatScreen()));
+                            }
+                          : null,
+                      child: const Text(
+                        'Chat Room',
+                        style: TextStyle(color: Colors.white),
+                      )),
                 ],
               ),
             ),

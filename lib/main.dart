@@ -46,7 +46,7 @@ class App extends StatelessWidget {
           final args =
               ModalRoute.of(ctx)!.settings.arguments as Map<String, dynamic>;
           final otherUserId = args['otherUserId'] as String;
-          return ChatScreen(otherUserId: otherUserId);
+          return ChatScreen();
         }
         //添加 '/chat' 路由，指向 ChatScreen
       },
