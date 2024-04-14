@@ -9,7 +9,7 @@ https://github.com/YChaoWang/Simple_GroupChat_App/assets/94699377/699ffbff-d9b2-
 
 
 The video is a bit long, you can refer to the timestamps next to the description.\
-影片有點久 可參考說明旁邊的時間戳
+影片有點久 可參考說明旁邊的時間戳記
 
 
 ### Description
