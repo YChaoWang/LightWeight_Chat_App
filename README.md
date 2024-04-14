@@ -5,7 +5,7 @@ A simple group chat project with flutter with dart for app frontend and Firebase
 ## Video Demo
 https://github.com/YChaoWang/Simple_GroupChat_App/assets/94699377/ba061c6f-9132-4b4d-a0c5-389f855a0e14
 
-## Description
+### Description
 1. Register, Login and Logout 
 2. Allow users to chat freely on this app while being able to see all users using this app.
 3. Your message color is like orange and others will be greenish.
@@ -14,7 +14,7 @@ https://github.com/YChaoWang/Simple_GroupChat_App/assets/94699377/ba061c6f-9132-
 
 Feel free to ask any questions you may have!
 
-中文
+### 中文
 一個使用Flutter和Dart構建的簡單群組聊天專案，前端Mobile App部分使用Flutter，後端則使用Firebase。
 ## 說明
 1. 註冊、登入和登出
