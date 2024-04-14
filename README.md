@@ -3,6 +3,7 @@
 A simple group chat project with flutter with dart for app frontend and Firebase for backend.
 
 ## Video Demo
+ios simulator
 
 https://github.com/YChaoWang/Simple_GroupChat_App/assets/94699377/699ffbff-d9b2-47f7-ac84-17adfbdc4218
 
