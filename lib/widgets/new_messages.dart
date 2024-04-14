@@ -3,9 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class NewMessage extends StatefulWidget {
-  const NewMessage({
-    super.key,
-  });
+  const NewMessage({super.key});
 
   @override
   State<NewMessage> createState() => _NewMessageState();
@@ -36,7 +34,9 @@ class _NewMessageState extends State<NewMessage> {
       'text': enteredMessage,
       'createdAt': Timestamp.now(),
       'userId': user.uid,
+      // 'userName': ' pleasework',
       'userName': userData.data()!['username'],
+      // 'userImage': 'pleasework',
       'userImage': userData.data()!['image_url'],
     });
     // send to Firebase
@@ -78,10 +78,9 @@ class _NewMessageState extends State<NewMessage> {
               icon: const Icon(
                 Icons.send,
                 size: 26,
-                color: Colors.blue,
               ),
               onPressed: _submitMessage,
-              color: Colors.blue,
+              color: Theme.of(context).colorScheme.primary,
             ),
           )
         ],

@@ -15,15 +15,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? _otherUserId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page'), actions: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          _editProfileButton(context),
-        ])
-      ]),
+      appBar: AppBar(
+          title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+            Text('Home Page'),
+            _editProfileButton(context),
+          ])),
       body: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: <Widget>[
@@ -44,6 +46,12 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const Text('Chat with users above?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      )),
+                  const SizedBox(height: 20),
                   OutlinedButton(
                       style: OutlinedButton.styleFrom(
                         minimumSize: Size(200, 45),
@@ -53,14 +61,12 @@ class _HomePageState extends State<HomePage> {
                         foregroundColor: Colors.white,
                         side: const BorderSide(color: Colors.white, width: 2),
                       ),
-                      onPressed: _otherUserId != null
-                          ? () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (ctx) => ChatScreen()));
-                            }
-                          : null,
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (ctx) => ChatScreen()));
+                      },
                       child: const Text(
-                        'Chat Room',
+                        'Join',
                         style: TextStyle(color: Colors.white),
                       )),
                 ],

@@ -42,12 +42,12 @@ class App extends StatelessWidget {
                 return const AuthScreen();
               },
             ),
-        '/chat': (ctx) {
-          final args =
-              ModalRoute.of(ctx)!.settings.arguments as Map<String, dynamic>;
-          final otherUserId = args['otherUserId'] as String;
-          return ChatScreen();
-        }
+        // '/chat': (ctx) {
+        //   // final args =
+        //   //     ModalRoute.of(ctx)!.settings.arguments as Map<String, dynamic>;
+        //   // final otherUserId = args['otherUserId'] as String;
+        //   return ChatScreen();
+        // }
         //添加 '/chat' 路由，指向 ChatScreen
       },
     );

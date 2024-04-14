@@ -11,6 +11,13 @@ class _RenameFieldState extends State<RenameField> {
   final TextEditingController _usernameController = TextEditingController();
   bool _isButtonEnabled = false;
   @override
+  void initState() {
+    super.initState();
+    // 添加文本字段的输入更改监听器
+    _usernameController.addListener(_updateButtonState);
+  }
+
+  @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
@@ -25,9 +32,9 @@ class _RenameFieldState extends State<RenameField> {
 
   void _renameUsername() async {
     try {
-      User? user = FirebaseAuth.instance.currentUser;
-      print(user);
+      User user = FirebaseAuth.instance.currentUser!;
       print(_usernameController.text);
+      print(user.email);
       if (user != null) {
         if (_usernameController.text.isNotEmpty &&
             _usernameController.text.trim().length >= 4) {
@@ -35,11 +42,17 @@ class _RenameFieldState extends State<RenameField> {
               .collection('users')
               .doc(user.uid)
               .set({
+            // 'email': user.email,
+            // 'imageUrl':
             'username': _usernameController.text,
-          });
-          _updateButtonState();
+          }, SetOptions(merge: true));
+
           FocusScope.of(context).unfocus();
           _usernameController.clear();
+
+          setState(() {
+            _isButtonEnabled = false;
+          });
           // Username renamed successfully
           // Do something else, like navigating to another screen
         }
@@ -55,11 +68,21 @@ class _RenameFieldState extends State<RenameField> {
   @override
   Widget build(BuildContext context) {
     User user = FirebaseAuth.instance.currentUser!;
+
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
+          Text(
+            'Rename your username',
+            style: TextStyle(fontSize: 12),
+          ),
+          SizedBox(height: 4),
           TextField(
+            onChanged: (value) {
+              // 更新按钮的可点击状态
+              _updateButtonState();
+            },
             controller: _usernameController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -68,7 +91,7 @@ class _RenameFieldState extends State<RenameField> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintText: "Your current username: ${user.uid}",
+              hintText: "Enter a new username",
               hintStyle: TextStyle(fontSize: 14),
             ),
           ),
